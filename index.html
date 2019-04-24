@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0020)http://10.129.1.189/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<title>You're a winner!</title>
+<style type="text/css">
+	:root {
+		--marqueeOneBlink: 1.04s
+		--marqueeTwoBlink: 1.1s
+		--marqueeThreeBlink: 0.97s
+		--marqueeThreeBlink: 1.01s
+		
+		--marqueeOneStart: 0.21s
+		--marqueeTwoStart: 0.42s
+		--marqueeThreeStart: 0.66s
+		--marqueeThreeStart: 0.33s
+		
+		--puppyTime: 0.17s
+		--kittenTime: 1.15s 
+		--puppyAndKittenTime: 1.96s
+	}
+	body, html {
+		height: 100%;
+		width: 100%;
+	}
+	body {
+		background-color: #FF00FF;
+		margin: 0;
+		padding: 0;
+	}
+	div#container {
+		height: 100%;
+	}
+	div {
+		padding: 0;
+		margin: 0;
+	}
+	marquee {
+		z-index: 1;
+	}
+	marquee#one {
+		position: absolute;
+		top: 0;
+		left: 0;
+		animation: blink-animation var(--marqueeOneBlink) step-start var(--marqueeOneStart) infinite;
+		-webkit-animation: blink-animation var(--marqueeOneBlink) step-start var(--marqueeOneStart) infinite;
+	}
+	marquee#two {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		animation: blink-animation var(--marqueeTwoBlink) step-start var(--marqueeTwoStart) infinite;
+		-webkit-animation: blink-animation var(--marqueeTwoBlink) step-start var(--marqueeTwoStart) infinite;
+		width: 33%;
+	}
+	marquee#three {
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
+		animation: blink-animation var(--marqueeThreeBlink) step-start var(--marqueeThreeStart) infinite;
+		-webkit-animation: blink-animation var(--marqueeThreeBlink) step-start var(--marqueeThreeStart) infinite;
+		width: 33%;
+	}
+	marquee#four {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		animation: blink-animation var(--marqueeFourBlink) step-start var(--marqueeFourStart) infinite;
+		-webkit-animation: blink-animation var(--marqueeFourBlink) step-start var(--marqueeFourStart) infinite;
+	}
+	h1 {
+		margin: 0;
+		padding: 0;
+		color: #00FF00;
+		font-size: 12vh;		
+	}
+	marquee#two h1, marquee#three h1 {
+		text-align: center;
+		color: yellow;
+	}
+	img {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		animation: blink-animation var(--marqueeFourStart) step-start 0.17s infinite;
+		-webkit-animation: blink-animation var(--marqueeFourStart) step-start 0.17s infinite;
+		z-index: -1;
+		margin-top: -170px;
+		margin-left: -189px;
+		height: 340px;
+		width: 378px;
+	}
+	img#kitten {
+		animation: blink-animation var(--puppyAndKittenTime) step-start 1.15s infinite;
+		-webkit-animation: blink-animation var(--puppyAndKittenTime) step-start 1.15s infinite;	
+	}
+	@keyframes blink-animation {
+	  50% {
+		opacity: 0.0;
+	  }
+	}
+	@-webkit-keyframes blink-animation {
+	  50% {
+		opacity: 0.0;
+	  }
+	}
+</style>
+</head>
+<body>
+<div id="container">
+	<marquee id="one" direct="left"><h1>You're a winner!</h1></marquee>
+	<marquee id="two" direction="up"><h1>You can do this!</h1></marquee>
+	<div id="puppy">
+		<img id="puppy" src="./puppy.jpg" />
+		<img id="kitten" src="./kitten.jpg" />
+	</div>
+	<marquee id="three" direction="down"><h1>You are special!</h1></marquee>
+	<marquee id="four" direction="right"><h1>People like you!</h1></marquee>
+</div>
+
+</body>
+<script type="text/javascript">
+function randomize(x) {
+	var marqueeMin=0.75;
+	var marqueeMax=1.25;
+	var marqueeOne = Math.random() * (+marqueeMax - +marqueeMin) + +marqueeMin;
+	var marqueeTwo = Math.random() * (+marqueeMax - +marqueeMin) + +marqueeMin;
+	var marqueeThree = Math.random() * (+marqueeMax - +marqueeMin) + +marqueeMin;
+	var marqueeFour = Math.random() * (+marqueeMax - +marqueeMin) + +marqueeMin;
+	
+	var marqueeOneElement = document.querySelector('marquee#one');
+	var marqueeTwoElement = document.querySelector('marquee#two');
+	var marqueeThreeElement = document.querySelector('marquee#three');
+	var marqueeFourElement = document.querySelector('marquee#four');
+	
+	marqueeOneElement.style.setProperty('--marqueeOneBlink', marqueeOne+'s');
+	marqueeTwoElement.style.setProperty('--marqueeTwoBlink', marqueeTwo+'s');
+	marqueeThreeElement.style.setProperty('--marqueeThreeBlink', marqueeThree+'s');
+	marqueeFourElement.style.setProperty('--marqueeFourBlink', marqueeFour+'s');
+	
+	var marqueeMin=0.0;
+	var marqueeMax=0.75;
+	var marqueeOne = Math.random() * (+marqueeMax - +marqueeMin) + +marqueeMin;
+	var marqueeTwo = Math.random() * (+marqueeMax - +marqueeMin) + +marqueeMin;
+	var marqueeThree = Math.random() * (+marqueeMax - +marqueeMin) + +marqueeMin;
+	var marqueeFour = Math.random() * (+marqueeMax - +marqueeMin) + +marqueeMin;
+	
+	marqueeOneElement.style.setProperty('--marqueeOneStart', marqueeOne+'s');
+	marqueeTwoElement.style.setProperty('--marqueeTwoStart', marqueeTwo+'s');
+	marqueeThreeElement.style.setProperty('--marqueeThreeStart', marqueeThree+'s');
+	marqueeFourElement.style.setProperty('--marqueeFourStart', marqueeFour+'s');
+	
+	randomTimeMin=10000;
+	randomTimeMax=60000;
+	var randomTime = Math.random() * (+randomTimeMax - +randomTimeMin) + +randomTimeMin;
+	
+	puppyTime = Math.random() * (+1.499 - +1) + +1;
+	kittenTime = Math.random() * (+3 - +1.5) + +1.5;
+	animationTime = (kittenTime + puppyTime) * 2;
+	
+	var puppy = document.querySelector('img#puppy');
+	var kitten = document.querySelector('img#kitten');
+	
+	puppy.style.setProperty('--puppyAndKittenTime', animationTime+'s');
+	kitten.style.setProperty('--puppyAndKittenTime', animationTime+'s');
+	puppy.style.setProperty('--puppyTime', puppyTime+'s');
+	kitten.style.setProperty('--kittenTime', kittenTime+'s');
+	
+	if ( !x ) {
+		return;
+	}
+	
+	setTimeout(randomize(--x), randomTime);
+}
+randomize(4500);
+</script>
+</html>
