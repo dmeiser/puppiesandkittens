@@ -1,179 +1,257 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!-- saved from url=(0020)http://10.129.1.189/ -->
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
 
-<title>You're a winner!</title>
-<style type="text/css">
-	:root {
-		--marqueeOneBlink: 1.04s
-		--marqueeTwoBlink: 1.1s
-		--marqueeThreeBlink: 0.97s
-		--marqueeThreeBlink: 1.01s
-		
-		--marqueeOneStart: 0.21s
-		--marqueeTwoStart: 0.42s
-		--marqueeThreeStart: 0.66s
-		--marqueeThreeStart: 0.33s
-		
-		--puppyTime: 0.17s
-		--kittenTime: 1.15s 
-		--puppyAndKittenTime: 1.96s
-	}
-	body, html {
-		height: 100%;
-		width: 100%;
-	}
-	body {
-		background-color: #FF00FF;
-		margin: 0;
-		padding: 0;
-	}
-	div#container {
-		height: 100%;
-	}
-	div {
-		padding: 0;
-		margin: 0;
-	}
-	marquee {
-		z-index: 1;
-	}
-	marquee#one {
-		position: absolute;
-		top: 0;
-		left: 0;
-		animation: blink-animation var(--marqueeOneBlink) step-start var(--marqueeOneStart) infinite;
-		-webkit-animation: blink-animation var(--marqueeOneBlink) step-start var(--marqueeOneStart) infinite;
-	}
-	marquee#two {
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 100%;
-		animation: blink-animation var(--marqueeTwoBlink) step-start var(--marqueeTwoStart) infinite;
-		-webkit-animation: blink-animation var(--marqueeTwoBlink) step-start var(--marqueeTwoStart) infinite;
-		width: 33%;
-	}
-	marquee#three {
-		position: absolute;
-		top: 0;
-		right: 0;
-		height: 100%;
-		animation: blink-animation var(--marqueeThreeBlink) step-start var(--marqueeThreeStart) infinite;
-		-webkit-animation: blink-animation var(--marqueeThreeBlink) step-start var(--marqueeThreeStart) infinite;
-		width: 33%;
-	}
-	marquee#four {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		animation: blink-animation var(--marqueeFourBlink) step-start var(--marqueeFourStart) infinite;
-		-webkit-animation: blink-animation var(--marqueeFourBlink) step-start var(--marqueeFourStart) infinite;
-	}
-	h1 {
-		margin: 0;
-		padding: 0;
-		color: #00FF00;
-		font-size: 12vh;		
-	}
-	marquee#two h1, marquee#three h1 {
-		text-align: center;
-		color: yellow;
-	}
-	img {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		animation: blink-animation var(--marqueeFourStart) step-start 0.17s infinite;
-		-webkit-animation: blink-animation var(--marqueeFourStart) step-start 0.17s infinite;
-		z-index: -1;
-		margin-top: -170px;
-		margin-left: -189px;
-		height: 340px;
-		width: 378px;
-	}
-	img#kitten {
-		animation: blink-animation var(--puppyAndKittenTime) step-start 1.15s infinite;
-		-webkit-animation: blink-animation var(--puppyAndKittenTime) step-start 1.15s infinite;	
-	}
-	@keyframes blink-animation {
-	  50% {
-		opacity: 0.0;
-	  }
-	}
-	@-webkit-keyframes blink-animation {
-	  50% {
-		opacity: 0.0;
-	  }
-	}
-</style>
-</head>
+	<title>You're a winner!</title>
+	<style type="text/css">
+		:root {
+			--marqueeOneBlink: 1.04s;
+			--marqueeTwoBlink: 1.1s;
+			--marqueeThreeBlink: 0.97s;
+			--marqueeThreeBlink: 1.01s;
+
+			--marqueeOneSpeed: 15s;
+			--marqueeTwoSpeed: 14.5s;
+			--marqueeThreeSpeed: 14.75s;
+			--marqueeThreeSpeed: 14.66s;
+			
+			--marqueeOneStart: 0.21s;
+			--marqueeTwoStart: 0.42s;
+			--marqueeThreeStart: 0.66s;
+			--marqueeThreeStart: 0.33s;
+			
+			--kittenTime: 1.15s; 
+			--noKittenTime: 1.96s;
+		}
+		body, html {
+			height: 100%;
+			width: 100%;
+		}
+		body {
+			background-color: #FF00FF;
+			margin: 0;
+			padding: 0;
+		}
+		div#container {
+			height: 100%;
+		}
+		div {
+			padding: 0;
+			margin: 0;
+		}
+		div.marquee {
+			z-index: 1;
+			width: 100%;
+			overflow: hidden;
+		}
+		div.marquee div.content {
+			/* display: inline-block; */
+			font-weight: bold;
+		}
+		div.marquee div.content {
+			font-size: 12vh;
+			color: #00FF00;
+		}
+		div.marquee {
+			position: absolute;
+			overflow: hidden;
+		}
+		div.marquee div.content {
+			text-align: center;
+		}
+		div.horizontalMarquee {
+			width: 100%;
+			left: 0;
+		}
+		div.horizontalMarquee div.content {
+			margin: 0;
+			padding: 0;
+			width: auto;
+			white-space: nowrap;
+		}
+		div.verticalMarquee {
+			top: 0;
+			height: 100%;
+			width: 33%;
+		}
+		div.verticalMarquee div.content {
+			margin: 0;
+			padding: 0;
+			padding-top: 100%;
+		}
+		div#one {
+			top: 0;
+			animation: blink-animation var(--marqueeOneBlink) step-start var(--marqueeOneStart) infinite;
+		}
+		div#one div.content {
+			animation: marquee-left-to-right var(--marqueeOneSpeed) linear infinite;
+		}
+		div#two {
+			left: 0;
+			animation: blink-animation var(--marqueeTwoBlink) step-start var(--marqueeTwoStart) infinite;
+		}
+		div#two div.content {
+			animation: marquee-top-to-bottom var(--marqueeTwoSpeed) linear infinite;
+		}
+		div#three {
+			right: 0;
+			animation: blink-animation var(--marqueeThreeBlink) step-start var(--marqueeThreeStart) infinite;
+		}
+		div#three div.content {
+			animation: marquee-bottom-to-top var(--marqueeThreeSpeed) linear infinite;
+		}
+		div#four {
+			bottom: 0;
+			animation: blink-animation var(--marqueeFourBlink) step-start var(--marqueeFourStart) infinite;
+		}
+		div#four div.content {
+			animation: marquee-right-to-left var(--marqueeFourSpeed) linear infinite;
+		}
+		div#two div.content, div#three div.content {
+			color: yellow;
+		}
+		img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			z-index: -1;
+			margin-top: -170px;
+			margin-left: -189px;
+			height: 340px;
+			width: 378px;
+		}
+		img#kitten {
+			animation: blink-animation var(--noKittenTime) step-start var(--kittenTime) infinite;
+		}
+		@keyframes blink-animation {
+			50% {
+				opacity: 0.0;
+			}
+		}
+		@keyframes marquee-left-to-right {
+    		0%   { 
+				transform: translate(100%, 0); 
+			}
+    		100% { 
+				transform: translate(-100%, 0); 
+			}
+		}
+		@keyframes marquee-right-to-left {
+    		0%   { 
+				transform: translate(-100%, 0); 
+			}
+    		100% { 
+				transform: translate(100%, 0); 
+			}
+		}
+		@keyframes marquee-top-to-bottom {
+    		0%   { 
+				transform: translate(0, 100%); 
+			}
+    		100% { 
+				transform: translate(0, -100%); 
+			}
+		}
+		@keyframes marquee-bottom-to-top {
+    		0%   { 
+				transform: translate(0, -100%); 
+			}
+    		100% { 
+				transform: translate(0, 100%); 
+			}
+		}
+	</style>
+	</head>
 <body>
 <div id="container">
-	<marquee id="one" direct="left"><h1>You're a winner!</h1></marquee>
-	<marquee id="two" direction="up"><h1>You can do this!</h1></marquee>
-	<div id="puppy">
-		<img id="puppy" src="./puppy.jpg" />
-		<img id="kitten" src="./kitten.jpg" />
+	<div id="one" class="horizontalMarquee marquee"><div class="content">You're a winner!</div></div>
+	<div id="two" class="verticalMarquee marquee"><div class="content">You can do this!</div></div>
+	<div id="puppiesAndKittens">
+		<img id="puppy" src="./puppy.jpg" alt="A cute puppy" />
+		<img id="kitten" src="./kitten.jpg" alt="A kitten" />
 	</div>
-	<marquee id="three" direction="down"><h1>You are special!</h1></marquee>
-	<marquee id="four" direction="right"><h1>People like you!</h1></marquee>
+	<div id="three" class="verticalMarquee marquee"><div class="content">You are special!</div></div>
+	<div id="four" class="horizontalMarquee marquee"><div class="content">People like you!</div></div>
 </div>
 
-</body>
 <script type="text/javascript">
-function randomize(x) {
-	var marqueeMin=0.75;
-	var marqueeMax=1.25;
-	var marqueeOne = Math.random() * (+marqueeMax - +marqueeMin) + +marqueeMin;
-	var marqueeTwo = Math.random() * (+marqueeMax - +marqueeMin) + +marqueeMin;
-	var marqueeThree = Math.random() * (+marqueeMax - +marqueeMin) + +marqueeMin;
-	var marqueeFour = Math.random() * (+marqueeMax - +marqueeMin) + +marqueeMin;
-	
-	var marqueeOneElement = document.querySelector('marquee#one');
-	var marqueeTwoElement = document.querySelector('marquee#two');
-	var marqueeThreeElement = document.querySelector('marquee#three');
-	var marqueeFourElement = document.querySelector('marquee#four');
-	
-	marqueeOneElement.style.setProperty('--marqueeOneBlink', marqueeOne+'s');
-	marqueeTwoElement.style.setProperty('--marqueeTwoBlink', marqueeTwo+'s');
-	marqueeThreeElement.style.setProperty('--marqueeThreeBlink', marqueeThree+'s');
-	marqueeFourElement.style.setProperty('--marqueeFourBlink', marqueeFour+'s');
-	
-	var marqueeMin=0.0;
-	var marqueeMax=0.75;
-	var marqueeOne = Math.random() * (+marqueeMax - +marqueeMin) + +marqueeMin;
-	var marqueeTwo = Math.random() * (+marqueeMax - +marqueeMin) + +marqueeMin;
-	var marqueeThree = Math.random() * (+marqueeMax - +marqueeMin) + +marqueeMin;
-	var marqueeFour = Math.random() * (+marqueeMax - +marqueeMin) + +marqueeMin;
-	
-	marqueeOneElement.style.setProperty('--marqueeOneStart', marqueeOne+'s');
-	marqueeTwoElement.style.setProperty('--marqueeTwoStart', marqueeTwo+'s');
-	marqueeThreeElement.style.setProperty('--marqueeThreeStart', marqueeThree+'s');
-	marqueeFourElement.style.setProperty('--marqueeFourStart', marqueeFour+'s');
-	
-	randomTimeMin=10000;
-	randomTimeMax=60000;
-	var randomTime = Math.random() * (+randomTimeMax - +randomTimeMin) + +randomTimeMin;
-	
-	puppyTime = Math.random() * (+1.499 - +1) + +1;
-	kittenTime = Math.random() * (+3 - +1.5) + +1.5;
-	animationTime = (kittenTime + puppyTime) * 2;
-	
-	var puppy = document.querySelector('img#puppy');
-	var kitten = document.querySelector('img#kitten');
-	
-	puppy.style.setProperty('--puppyAndKittenTime', animationTime+'s');
-	kitten.style.setProperty('--puppyAndKittenTime', animationTime+'s');
-	puppy.style.setProperty('--puppyTime', puppyTime+'s');
-	kitten.style.setProperty('--kittenTime', kittenTime+'s');
-	
-	if ( !x ) {
-		return;
+	function randomizeMarquee() {
+		var marqueeMin=0.75;
+		var marqueeMax=1.25;
+		var marqueeOne = Math.random() * (marqueeMax - marqueeMin) + marqueeMin;
+		var marqueeTwo = Math.random() * (marqueeMax - marqueeMin) + marqueeMin;
+		var marqueeThree = Math.random() * (marqueeMax - marqueeMin) + marqueeMin;
+		var marqueeFour = Math.random() * (marqueeMax - marqueeMin) + marqueeMin;
+		
+		var marqueeOneElement = document.querySelector('div#one');
+		var marqueeTwoElement = document.querySelector('div#two');
+		var marqueeThreeElement = document.querySelector('div#three');
+		var marqueeFourElement = document.querySelector('div#four');
+		
+		marqueeOneElement.style.setProperty('--marqueeOneBlink', marqueeOne+'s');
+		marqueeTwoElement.style.setProperty('--marqueeTwoBlink', marqueeTwo+'s');
+		marqueeThreeElement.style.setProperty('--marqueeThreeBlink', marqueeThree+'s');
+		marqueeFourElement.style.setProperty('--marqueeFourBlink', marqueeFour+'s');
+		
+		marqueeMin=0.0;
+		marqueeMax=0.75;
+		marqueeOne = Math.random() * (marqueeMax - marqueeMin) + marqueeMin;
+		marqueeTwo = Math.random() * (marqueeMax - marqueeMin) + marqueeMin;
+		marqueeThree = Math.random() * (marqueeMax - marqueeMin) + marqueeMin;
+		marqueeFour = Math.random() * (marqueeMax - marqueeMin) + marqueeMin;
+		
+		marqueeOneElement.style.setProperty('--marqueeOneStart', marqueeOne+'s');
+		marqueeTwoElement.style.setProperty('--marqueeTwoStart', marqueeTwo+'s');
+		marqueeThreeElement.style.setProperty('--marqueeThreeStart', marqueeThree+'s');
+		marqueeFourElement.style.setProperty('--marqueeFourStart', marqueeFour+'s');
+
+		var marqueeOneElement = document.querySelector('div#one div.content');
+		var marqueeTwoElement = document.querySelector('div#two div.content');
+		var marqueeThreeElement = document.querySelector('div#three div.content');
+		var marqueeFourElement = document.querySelector('div#four div.content');
+
+		marqueeMin=14;
+		marqueeMax=16;
+		marqueeOne = Math.random() * (marqueeMax - marqueeMin) + marqueeMin;
+		marqueeTwo = Math.random() * (marqueeMax - marqueeMin) + marqueeMin;
+		marqueeThree = Math.random() * (marqueeMax - marqueeMin) + marqueeMin;
+		marqueeFour = Math.random() * (marqueeMax - marqueeMin) + marqueeMin;
+
+		marqueeOneElement.style.setProperty('--marqueeOneSpeed', marqueeOne+'s');
+		marqueeTwoElement.style.setProperty('--marqueeTwoSpeed', marqueeTwo+'s');
+		marqueeThreeElement.style.setProperty('--marqueeThreeSpeed', marqueeThree+'s');
+		marqueeFourElement.style.setProperty('--marqueeFourSpeed', marqueeFour+'s');
 	}
 	
-	setTimeout(randomize(--x), randomTime);
-}
-randomize(4500);
+	function randomizePuppiesAndKittens() {
+		kittenTime = Math.random() * (3 - 1.5) + 1.5;
+		noKittenTime = Math.random() * (3 - 1.5) + 1.5;
+		
+		var puppy = document.querySelector('img#puppy');
+		var kitten = document.querySelector('img#kitten');
+		
+		kitten.style.setProperty('--noKittenTime', noKittenTime+'s');
+		kitten.style.setProperty('--kittenTime', kittenTime+'s');
+	}	
+
+	function randomize(x) {
+		randomizePuppiesAndKittens();
+		randomizeMarquee();
+		
+		if ( !x ) {
+			return;
+		}
+		
+		randomTimeMin=10000;
+		randomTimeMax=60000;
+		var randomTime = Math.random() * (randomTimeMax - randomTimeMin) + randomTimeMin;
+
+		setTimeout(randomize(--x), randomTime);
+	}
+
+	randomize(4500);
 </script>
+
+</body>
 </html>
